@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
 *:focus{
@@ -15,4 +16,17 @@ html, body, #root{
 
 body{
   font-size:1rem;
+  background-color: #efefef;
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+button{
+  cursor:pointer;
 }

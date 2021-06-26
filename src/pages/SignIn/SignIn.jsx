@@ -7,6 +7,11 @@ function SignIn() {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
+  function handleSubmit(e){
+    e.preventDefault()
+    alert('clicou')
+  }
+
   return (
     <div className="container-center">
       <div className="login">
@@ -15,10 +20,10 @@ function SignIn() {
           <img src={Logo} alt="Logo do sistema" />
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Entrar</h1>
-          <input type="email" placeholder="Email@email.com" />
-          <input type="password" placeholder="********" />
+          <input type="email" placeholder="Email@email.com" value={email} onChange={e => setEmail(e.target.value)}/>
+          <input type="password" placeholder="********" value={password} onChange={e => setPassword(e.target.value)} />
           <button type="submit">Acessar</button>
         </form>
 

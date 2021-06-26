@@ -6,7 +6,7 @@ export default function RouterWrapper({
   ...rest 
 }){
   const loading = false;
-  const signed = false;
+  const signed = true;
 
   if(loading){
     return(

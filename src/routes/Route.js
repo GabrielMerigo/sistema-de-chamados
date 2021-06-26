@@ -3,29 +3,30 @@ import { Route, Redirect } from 'react-router-dom';
 export default function RouterWrapper({
   componenent: Componenent,
   isPrivate,
-  ...rest 
-}){
+  ...rest
+}) {
   const loading = false;
-  const signed = true;
+  const signed = false;
 
-  if(loading){
-    return(
+  if (loading) {
+    return (
       <div></div>
     )
   }
-
-  if(!signed && isPrivate){
+  
+  console.log(isPrivate)
+  if (!signed && isPrivate) {
     return <Redirect to="/" />
   }
-
-  if(signed && !isPrivate){
+  
+  if (signed && !isPrivate) {
     return <Redirect to="/dashboard" />
   }
 
-  return(
-    <Route 
+  return (
+    <Route
       {...rest}
-      render={ props => (
+      render={props => (
         <Componenent {...props} />
       )}
     />

@@ -43,7 +43,7 @@ function AuthProvider({ children }) {
               email: value.user.email,
               avatarUrl: null
             }
-            
+
             setUser(data)
             storageUser(data)
             setLoadingAuth(false)
@@ -54,13 +54,26 @@ function AuthProvider({ children }) {
       })
   }
 
-  function storageUser(data){
+  function storageUser(data) {
     localStorage.setItem('sistemaUser', JSON.stringify(data))
+  }
+
+  async function signOut(){
+    await firebase.auth().signOut()
+    localStorage.removeItem('sistemaUser')
+    setUser(null)
   }
 
 
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, loading }} >
+    <AuthContext.Provider
+      value={{
+      signed: !!user,
+      user,
+      loading,
+      signUp,
+      signOut
+    }}>
       {children}
     </AuthContext.Provider>
   )

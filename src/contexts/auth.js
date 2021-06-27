@@ -23,6 +23,16 @@ function AuthProvider({ children }) {
     loadStorage()
   }, [])
 
+  async function signIn(email, password){
+    await firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(async value => {
+        let uid = value.user.uid
+      })
+      .catch(() => {
+
+      })
+  }
+
   async function signUp(email, password, nome) {
     setLoadingAuth(true)
 

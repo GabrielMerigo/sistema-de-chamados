@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext } from 'react';
-import firebase from '../services/firebaseConnection'
+import firebase from '../services/firebaseConnection';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
 
 export const AuthContext = createContext({})
 
@@ -24,12 +26,29 @@ function AuthProvider({ children }) {
   }, [])
 
   async function signIn(email, password){
+    setLoadingAuth(true)
+    
     await firebase.auth().signInWithEmailAndPassword(email, password)
       .then(async value => {
         let uid = value.user.uid
-      })
-      .catch(() => {
 
+        const userProfile = await firebase.firestore().collection('users')
+          .doc(uid).get()
+
+        let data = {
+          uid: uid,
+          nome: userProfile.data().nome,
+          avatar: userProfile.data().avatarUrl,
+          email: value.user.email
+        };
+
+        setUser(data)
+        storageUser(data)
+        setLoadingAuth(false)
+        toast.success('Bem-vindo de volta')
+      })
+      .catch(err => {
+        console.log(err)
       })
   }
 
@@ -57,6 +76,7 @@ function AuthProvider({ children }) {
             setUser(data)
             storageUser(data)
             setLoadingAuth(false)
+            toast.success('Cadastro bem sucedido')
           })
       }).catch(err => {
         console.log(err)
@@ -82,8 +102,11 @@ function AuthProvider({ children }) {
       user,
       loading,
       signUp,
-      signOut
+      signOut,
+      signIn,
+      loadingAuth
     }}>
+    <ToastContainer/>
       {children}
     </AuthContext.Provider>
   )

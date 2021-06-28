@@ -4,7 +4,7 @@ import Route from '../routes/Route'
 import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
 
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/Dashboard/Dashboard.jsx';
 
 export default function Routes(){
   return(

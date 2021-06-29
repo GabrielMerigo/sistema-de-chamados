@@ -12,7 +12,7 @@ function Header() {
   return (
     <div className="sidebar">
       <div>
-        <img src={user.avatar === null ? Avatar : user.avatar} alt="Foto Avatar" />
+        <img src={user.avatarUrl === null ? Avatar : user.avatarUrl} alt="Foto Avatar" />
       </div>
       <Link to="/dashboard">
         <FiHome color="#bbb" size={24} />

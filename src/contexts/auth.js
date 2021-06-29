@@ -105,8 +105,7 @@ function AuthProvider({ children }) {
       signOut,
       signIn,
       loadingAuth,
-      setUser,
-      storageUser
+      setUser
     }}>
     <ToastContainer/>
       {children}

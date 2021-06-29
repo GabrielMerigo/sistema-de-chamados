@@ -68,7 +68,6 @@ export default function Profile(){
           }; 
           setUser(data);
           storageUser(data);
-
         })
 
       })

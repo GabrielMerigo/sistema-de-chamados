@@ -2,9 +2,9 @@ import Header from "../../components/Header/Header";
 import Title from "../../components/Title/Title";
 import '../New/new.css'
 import { FiPlusCircle } from 'react-icons/fi'
+import { useState } from "react";
 
 export default function New() {
-
   function handleRegister(e){
     e.preventDefault()
   }

@@ -48,7 +48,7 @@
 
 .sidebar a:hover{
   color: #fff;
-  background: #121212;
+  filter: brightness(0.70);
 }
 
 .content{
@@ -60,16 +60,22 @@
   .sidebar{
     width: 100%;
     height: auto;
+    background: #181c2e;
+    margin-bottom: 40px;
     position: relative;
-    background: #121212;
   }
-
+  
   .content{
     margin-left: 0px;
   }
-  
 
   .sidebar a{
+    color:#181c2e;  
+    float: left;
+  }
+  
+  .sidebar svg{
+    color: #181c2e;  
     float: left;
   }
 

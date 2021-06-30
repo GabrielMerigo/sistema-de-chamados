@@ -47,6 +47,8 @@
   border:0;
   border: 5px;
   max-width: 600px;
+  background: #bdbcbc;
+  border-radius: 5px;
 }
 
 .form-profile input:disabled{

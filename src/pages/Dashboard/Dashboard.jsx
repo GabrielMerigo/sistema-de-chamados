@@ -88,6 +88,11 @@ export default function Dashboard() {
 
   async function handleMore(){
     setLoadingMore(true)
+    await listRef.startAfter(lastDocs).limit(5)
+      .get()
+      .then(snapshot => {
+        updateState(snapshot)
+      })
   }
 
   return (

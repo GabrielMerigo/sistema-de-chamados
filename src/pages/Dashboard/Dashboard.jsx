@@ -95,6 +95,10 @@ export default function Dashboard() {
       })
   }
 
+  function tooglePostModal(item){
+    console.log(item)
+  }
+
   return (
     <div>
       <Header />
@@ -138,7 +142,7 @@ export default function Dashboard() {
                       </td>
                       <td data-label="Cadastro">{item.createdFormated}</td>
                       <td data-label="#">
-                        <button className="action" style={{ backgroundColor: '#3583f6' }}>
+                        <button className="action" style={{ backgroundColor: '#3583f6' }} onClick={() => tooglePostModal(item)}>
                           <FiSearch color="#fff" size={17} />
                         </button>
                         <button className="action" style={{ backgroundColor: '#f6a935' }}>

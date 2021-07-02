@@ -5,8 +5,9 @@ import Title from '../../components/Title/Title';
 import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns'
-
+import Modal from '../../components/Modal/Modal';
 import firebase from '../../services/firebaseConnection';
+
 
 export default function Dashboard() {
   const [chamados, setChamados] = useState([])
@@ -16,6 +17,9 @@ export default function Dashboard() {
   const [isEmpty, setIsEmpty] = useState(false);
   const [lastDocs, setLastDocs] = useState()
 
+  const [showPostModal, setShowPostModal] = useState(false)
+  const [detail, setDetails] = useState()
+
   useEffect(() => {
 
     loadChamados()
@@ -23,7 +27,7 @@ export default function Dashboard() {
     return () => {
 
     }
-  }, [])
+  }, [loadChamados])
 
   async function loadChamados() {
     await listRef
@@ -86,7 +90,7 @@ export default function Dashboard() {
     )
   }
 
-  async function handleMore(){
+  async function handleMore() {
     setLoadingMore(true)
     await listRef.startAfter(lastDocs).limit(5)
       .get()
@@ -95,8 +99,9 @@ export default function Dashboard() {
       })
   }
 
-  function tooglePostModal(item){
-    console.log(item)
+  function tooglePostModal(item) {
+    setShowPostModal(!showPostModal)
+    setDetails(item)
   }
 
   return (
@@ -138,7 +143,7 @@ export default function Dashboard() {
                       <td data-label="Cliente">{item.cliente}</td>
                       <td data-label="Assunto">{item.assunto}</td>
                       <td data-label="Status">
-                        <span className="badge" style={{ background: item.status === 'Aberto' ? '#5cb85c' : '#999'}}>{item.status}</span>
+                        <span className="badge" style={{ background: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}</span>
                       </td>
                       <td data-label="Cadastro">{item.createdFormated}</td>
                       <td data-label="#">
@@ -155,13 +160,20 @@ export default function Dashboard() {
 
               </tbody>
             </table>
-
-            { loadingMore && <h3 style={{textAlign: 'center', marginTop: 15 }} ></h3> }    
-            { !loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}>Buscar Mais</button> }  
+            {loadingMore && <h3 style={{ textAlign: 'center', marginTop: 15 }} ></h3>}
+            {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}>Buscar Mais</button>}
 
           </>
         )}
       </div>
+      {showPostModal && (
+        <Modal
+          conteudo={detail}
+          close={togglePostModal}
+        />
+
+      )}
+
     </div>
   )
 }

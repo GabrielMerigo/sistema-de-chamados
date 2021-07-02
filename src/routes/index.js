@@ -20,6 +20,7 @@ export default function Routes(){
       <Route exact path="/dashboard" componenent={Dashboard} isPrivate/>
       <Route exact path="/customers" componenent={Customers} isPrivate />
       <Route exact path="/new" componenent={New} isPrivate />
+      <Route exact path="/new/:id" componenent={New} isPrivate/>
     </Switch>
   )
 }

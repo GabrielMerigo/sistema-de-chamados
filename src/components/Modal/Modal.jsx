@@ -1,12 +1,12 @@
 import './modal.css';
-import { Fix } from 'react-icons/fi';
+import { FiX } from 'react-icons/fi'
 
 export default function Modal({conteudo, close}){
   return(
     <div className="modal" >
       <div className="container">
         <button className="close" onClick={close} >
-          <Fix size={23} color="#fff"/>
+          <FiX size={23} color="#fff"/>
         </button>
         <div>
           <h2>Detalhes do Chamado</h2>

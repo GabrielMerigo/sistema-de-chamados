@@ -169,7 +169,7 @@ export default function Dashboard() {
       {showPostModal && (
         <Modal
           conteudo={detail}
-          close={togglePostModal}
+          close={tooglePostModal}
         />
 
       )}

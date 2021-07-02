@@ -1,12 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../Dashboard/dashboard.css'
 import Header from '../../components/Header/Header.jsx';
 import Title from '../../components/Title/Title';
 import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
+import firebase from '../../services/firebaseConnection';
+
 export default function Dashboard() {
-  const [chamados, setChamados] = useState([1]);
+  const [chamados, setChamados] = useState([])
+  const [loading, setLloading] = useState(true)
+
+  useEffect(() => {
+
+    loadChamados()
+
+    return() => {
+
+    }
+  }, [])
+
+  async function loadChamados(){
+
+  }
 
   return (
     <div>
